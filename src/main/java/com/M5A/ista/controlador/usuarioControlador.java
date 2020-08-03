@@ -12,6 +12,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,5 +39,11 @@ public class usuarioControlador {
         List <usuarios> usuarios = new ArrayList<>();
         service.findAll().forEach(usuarios::add);
         return usuarios;
+    }
+    
+    @PostMapping(value = "/usuarios/create")
+    public usuarios postUsuario(@RequestBody usuarios user){
+        usuarios _usuarios = service.save(new usuarios(user.getId(),user.getNombres(),user.getCorreo(), user.getUsuario(), user.getPassword()));
+    return _usuarios;
     }
 }

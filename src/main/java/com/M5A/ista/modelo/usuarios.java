@@ -34,6 +34,15 @@ public class usuarios {
     public usuarios() {
     }
 
+    public usuarios(int id, String nombres, String correo, String usuario, String password) {
+        this.id = id;
+        this.nombres = nombres;
+        this.correo = correo;
+        this.usuario = usuario;
+        this.password = password;
+    }
+    
+
     public usuarios(int id, String usuario) {
         this.id = id;
         this.usuario = usuario;
