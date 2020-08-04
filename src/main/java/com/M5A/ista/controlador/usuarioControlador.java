@@ -43,7 +43,7 @@ public class usuarioControlador {
     
     @PostMapping(value = "/usuarios/create")
     public usuarios postUsuario(@RequestBody usuarios user){
-        usuarios _usuarios = service.save(new usuarios(user.getId(),user.getNombres(),user.getCorreo(), user.getUsuario(), user.getPassword()));
+        usuarios _usuarios = service.save(new usuarios(user.getId(),user.getNombres(),user.getCorreo(), user.getUsuario(), user.getPassword(), user.getUrl()));
     return _usuarios;
     }
 }
