@@ -5,11 +5,19 @@
  */
 package com.M5a.ista.modelo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,41 +27,37 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuarios")
 public class usuarios {
- @Id
- @Column
- private int id;
- @Column
- private String nombres;
- @Column
- private String correo;
- @Column
- private String usuario;
- @Column
- private String password;
 
+    @Id
+    @Column
+    private String id;
+    @Column
+    private String nombres;
+    @Column
+    private String correo;
+    @Column
+    private String usuario;
+    @Column
+    private String password;
+    @Column
+    private String url;
     public usuarios() {
     }
 
-    public usuarios(int id, String nombres, String correo, String usuario, String password) {
+    public usuarios(String id, String nombres, String correo, String usuario, String password, String url) {
         this.id = id;
         this.nombres = nombres;
         this.correo = correo;
         this.usuario = usuario;
         this.password = password;
-    }
-    
-
-    public usuarios(int id, String usuario) {
-        this.id = id;
-        this.usuario = usuario;
+        this.url = url;
     }
 
- 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -64,6 +68,7 @@ public class usuarios {
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
+
     public String getCorreo() {
         return correo;
     }
@@ -88,11 +93,20 @@ public class usuarios {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "usuarios{" + "id=" + id + ", nombres=" + nombres + ", correo=" + correo + ", usuario=" + usuario + ", password=" + password + '}';
+    public String getUrl() {
+        return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "usuarios{" + "id=" + id + ", nombres=" + nombres + ", correo=" + correo + ", usuario=" + usuario + ", password=" + password + ", url=" + url + '}';
+    }
+
+    // modelo agregado
+  
 
 }
-    
