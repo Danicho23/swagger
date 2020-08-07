@@ -41,6 +41,7 @@ public class usuarios {
     private String password;
     @Column
     private String url;
+    
     public usuarios() {
     }
 

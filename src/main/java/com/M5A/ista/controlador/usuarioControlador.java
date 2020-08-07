@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author LENOVO
  */
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping (path ="/api")
 @ResponseBody
@@ -32,7 +32,7 @@ public class usuarioControlador {
     
     @Autowired
     usuarioRepository service;
-    
+    @CrossOrigin(origins = "*")
     @GetMapping("/usuarios")
     public List<usuarios>getAllUsuarios (){
         System.out.println("todos los usarios.....");
@@ -40,7 +40,7 @@ public class usuarioControlador {
         service.findAll().forEach(usuarios::add);
         return usuarios;
     }
-    
+    @CrossOrigin(origins = "*")
     @PostMapping(value = "/usuarios/create")
     public usuarios postUsuario(@RequestBody usuarios user){
         usuarios _usuarios = service.save(new usuarios(user.getId(),user.getNombres(),user.getCorreo(), user.getUsuario(), user.getPassword(), user.getUrl()));
